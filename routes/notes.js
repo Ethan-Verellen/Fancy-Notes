@@ -1,12 +1,12 @@
-const fnotes = require('express').Router();
+const notes = require('express').Router();
 const { readFromFile, writeToFile, readAndAppend } = require('../helpers/fsUtils');
 const { v4:uuidv4 }=require('uuid');
 
-fnotes.get('/', (req, res) => {
+notes.get('/', (req, res) => {
     readFromFile('./db/db.json').then((data)=>res.json(JSON.parse(data)));
 });
 
-fnotes.post('/', (req, res) => {
+notes.post('/', (req, res) => {
 
     const { title, text } = req.body;
 
@@ -25,4 +25,4 @@ fnotes.post('/', (req, res) => {
 
 });
 
-module.exports = fnotes;
+module.exports = notes;
